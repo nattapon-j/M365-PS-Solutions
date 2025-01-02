@@ -15,8 +15,8 @@ $newLicense = "Microsoft_365_E3_(no_Teams)"  # Microsoft 365 E3
 Write-Host "Fetching all users..." -ForegroundColor Yellow
 # $users = Get-MgUser -All -ExpandProperty "AssignedLicenses"
 $o365e3Sku = Get-MgSubscribedSku -All | Where SkuPartNumber -eq $oldLicense
-$users = Get-MgUser -Filter "assignedLicenses/any(x:x/skuId eq $($o365E3sku.SkuId) )" -ConsistencyLevel eventual -CountVariable e5licensedUserCount -All
-Write-Host "Found $e5licensedUserCount E5 licensed users."
+$users = Get-MgUser -Filter "assignedLicenses/any(x:x/skuId eq $($o365E3sku.SkuId) )" -ConsistencyLevel eventual -CountVariable e3licensedUserCount -All
+Write-Host "Found $e3licensedUserCount Office 365 E3 licensed users."
 
 # Iterate through users
 foreach ($user in $users) {
